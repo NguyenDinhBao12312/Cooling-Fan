@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+    <title>Cooling Fan</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- container -->
+<div class="container">
+    <h1>Cooling Fan</h1>
+    <!-- fan img -->
+    <div class="svg">
+      <img class="wings" src="https://i.ya-webdesign.com/images/fan-blades-png.png" alt="">
+    </div>
+    <div class="buttons">
+      <p class="stop">Stop</p>
+      <p class="first">1</p>
+      <p class="second">2</p>
+      <p class="third">3</p>
+    </div>
+  </div>     
+</body>
+<script>
+    let wingsImg = document.querySelector(".wings");
+
+    let btns = document.querySelectorAll(".buttons p");
+
+btns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    let arr = [];
+      e.target.parentNode.querySelectorAll("p").forEach((child) => {
+        if (child !== e.target) {
+          if (e.target.classList.contains("first")) {
+            wingsImg.classList.add("one");
+            wingsImg.style.animationDuration = `1s`;
+            wingsImg.style.animationPlayState = `running`;
+          } else if (e.target.classList.contains("second")) {
+            wingsImg.classList.add("two");
+            wingsImg.style.animationDuration = `0.5s`;
+            wingsImg.style.animationPlayState = `running`;
+          } else if (e.target.classList.contains("third")) {
+            wingsImg.classList.add("third");
+            wingsImg.style.animationPlayState = `running`;
+            wingsImg.style.animationDuration = `0.1s`;
+          } else if (e.target.classList.contains("stop")) {
+            wingsImg.classList.add("stop");
+            wingsImg.style.animationPlayState = `paused`;
+          }
+        }
+      })
+  });
+});
+
+</script>
+</html>
